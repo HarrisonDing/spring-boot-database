@@ -1,0 +1,86 @@
+
+// 构建脚本
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		//compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.0.4.RELEASE', ext: 'pom'
+	}
+}
+
+// 所有项目共有的配置
+allprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	group = projectGroup
+	version = projectVersion
+	
+    sourceCompatibility = project_jdk
+    targetCompatibility = project_jdk
+
+	repositories {
+		mavenCentral()
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+		jcenter()
+	}
+
+	dependencies {
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+		compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+		
+		// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+		testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
+		
+	}
+}
+
+
+// 子模块通用配置
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+
+    // java编译的时候缺省状态下会因为中文字符而失败
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        testCompile 'junit:junit:4.12'
+        	    // Use JUnit test framework
+	    testImplementation 'junit:junit:4.12'
+        
+    }
+    
+    configurations {
+
+        //deployerJars
+
+        //
+        // 所有需要忽略的包定义在此
+        //
+        //all*.exclude group: 'commons-httpclient'
+        //all*.exclude group: 'commons-logging'
+        //all*.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+    }
+}
+
+dependencies {
+    // 该子工程包含另外一个子工程
+	compile project(':multi-projects-child1')
+	compile project(':multi-projects-child2')
+}
