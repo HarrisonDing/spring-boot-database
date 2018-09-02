@@ -1,0 +1,7 @@
+
+1. Error executing DDL via JDBC Statement
+	It is caused by table name should not be as *-*, "-" is not ok, changing to "_" to make it work.
+
+2. Missing some key annotation:
+	@RestController
+	@RequestMapping(path = "/jpa")

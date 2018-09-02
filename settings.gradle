@@ -7,7 +7,7 @@
  * in the user guide at https://docs.gradle.org/4.6/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'multi-projects-parent'
+rootProject.name = 'spring-boot-database'
 
-include 'multi-projects-child1'
-include 'multi-projects-child2'
+include 'spring-boot-database-jpa'
+include 'spring-boot-database-jdbc'

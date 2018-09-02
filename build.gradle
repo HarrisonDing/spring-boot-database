@@ -67,10 +67,8 @@ subprojects {
     }
     
     configurations {
-
         //deployerJars
 
-        //
         // 所有需要忽略的包定义在此
         //
         //all*.exclude group: 'commons-httpclient'
@@ -81,6 +79,6 @@ subprojects {
 
 dependencies {
     // 该子工程包含另外一个子工程
-	compile project(':multi-projects-child1')
-	compile project(':multi-projects-child2')
+	compile project(':spring-boot-database-jpa')
+	compile project(':spring-boot-database-jdbc')
 }
