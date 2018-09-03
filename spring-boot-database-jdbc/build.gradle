@@ -1,7 +1,6 @@
 buildscript {
     ext {
         springBootVersion = '2.0.4.RELEASE'
-        swaggerVersion = '2.9.2'
     }
     repositories {
         mavenCentral()
@@ -15,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-archivesBaseName = 'MultiProjectsChild2'
+archivesBaseName = 'spring-boot-database-jdbc'
 
 repositories {
     mavenCentral()
@@ -23,24 +22,12 @@ repositories {
 
 dependencies {
 
-	// Depends on other project
-    //compile project(':model')
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: springBootVersion
 
-    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
-compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.2'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
 
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
-
-	// https://mvnrepository.com/artifact/org.springframework/spring-context
-compile group: 'org.springframework', name: 'spring-context', version: '5.0.8.RELEASE'    
-
-    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-runtime group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
-    //runtime('mysql:mysql-connector-java')
+	runtime group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
         
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
-testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-    //testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
     
 }
