@@ -7,8 +7,4 @@
  * in the user guide at https://docs.gradle.org/4.6/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'spring-boot-database'
-
-include 'spring-boot-database-jpa'
-include 'spring-boot-database-jdbc'
-include 'spring-boot-database-mybatis'
+rootProject.name = 'spring-boot-database-mybatis'

@@ -81,4 +81,5 @@ dependencies {
     // 该子工程包含另外一个子工程
 	compile project(':spring-boot-database-jpa')
 	compile project(':spring-boot-database-jdbc')
+	compile project(':spring-boot-database-mybatis')
 }
